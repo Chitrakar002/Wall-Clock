@@ -1,0 +1,44 @@
+const secStick = document.querySelector('.secStick');
+const minStick = document.querySelector('.minStick');
+const hourStick = document.querySelector('.hourStick');
+const timeInfo = document.querySelector('.timeInfo');
+const dateInfo = document.querySelector('.dateInfo');
+const weekDay  = document.querySelector('.Day'); 
+// console.dir(dateInfo);
+let now;
+// console.log(yr);
+let yr;
+let hour;
+let min;
+let sec;
+let date;
+let month;
+setInterval(()=>{
+    const d = new Date();
+    let day = (d.toDateString());
+    const darr = day.split(" ");
+    // console.log(darr);
+    
+    now = new Date();
+    // console.dir(now);
+    date = now.getDate();
+    month = now.getMonth();
+    yr = now.getFullYear();
+    // console.log(yr);
+    // console.log(month);
+    // console.log(date);
+    min = now.getMinutes();
+    hour = now.getHours();
+    sec = now.getSeconds();
+    secStick.style.transform = `rotate(${sec*6}deg)`;
+    minStick.style.transform = `rotate(${min*6}deg)`;
+    hourStick.style.transform = `rotate(${hour*30}deg)`;
+    timeInfo.textContent = `${hour} : ${min} : ${sec}`;
+    dateInfo.textContent = `${date} : ${month+1} : ${yr}`;
+    weekDay.textContent = `${darr[0]}`;
+    // let yr = now.getFullYear();
+    // console.log(hour);
+    // console.log(min);
+    // console.log(sec);
+
+},1000);
